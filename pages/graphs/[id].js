@@ -409,7 +409,7 @@ export default function Home() {
                     name="description"
                     content="Database design tool based on entity relation diagram"
                 />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.svg" />
             </Head>
 
             <Nav setShowModal={setShowModal} setShowDrawer={setShowDrawer} />

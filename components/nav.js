@@ -42,7 +42,10 @@ export default function Nav({ setShowModal, setShowDrawer }) {
     }
 
     return (
-        <nav className="nav">
+        <nav
+            className="nav"
+            style={{ justifyContent: 'space-between', backgroundColor: '#007bff', height: '80px' }}
+        >
             <Space>
                 <Link href="/graphs" passHref>
                     <IconLeft style={{ fontSize: 20 }} />
@@ -56,13 +59,7 @@ export default function Nav({ setShowModal, setShowDrawer }) {
             </Space>
 
             <Space>
-                <Button
-                    size="small"
-                    type="primary"
-                    status="success"
-                    shape="round"
-                    onClick={() => updateGraph()}
-                >
+                <Button size="small" type="primary" status="success" onClick={() => updateGraph()}>
                     Save
                 </Button>
                 <Dropdown
@@ -86,8 +83,8 @@ export default function Nav({ setShowModal, setShowDrawer }) {
                         </Menu>
                     }
                 >
-                    <Button size="small" type="primary" shape="round">
-                        + New Table
+                    <Button size="small" type="primary">
+                        Create New Table
                     </Button>
                 </Dropdown>
                 <Popconfirm
@@ -100,32 +97,21 @@ export default function Nav({ setShowModal, setShowDrawer }) {
                         setLinkDict({});
                     }}
                 >
-                    <Button size="small" type="outline" status="danger" shape="round">
+                    <Button size="small" type="outline" status="danger">
                         Clear
                     </Button>
                 </Popconfirm>
                 <Button
                     size="small"
                     type="outline"
-                    shape="round"
                     onClick={() => setShowModal('export')}
+                    style={{ color: 'white' }}
                 >
                     Export
                 </Button>
-                <Button
-                    size="small"
-                    type="secondary"
-                    shape="round"
-                    onClick={() => setShowDrawer('logs')}
-                >
+                <Button size="small" type="secondary" onClick={() => setShowDrawer('logs')}>
                     Logs
                 </Button>
-                <Switch
-                    checkedIcon={<IconMoonFill />}
-                    uncheckedIcon={<IconSunFill />}
-                    checked={theme === 'dark'}
-                    onChange={e => setTheme(e ? 'dark' : 'light')}
-                />
             </Space>
         </nav>
     );

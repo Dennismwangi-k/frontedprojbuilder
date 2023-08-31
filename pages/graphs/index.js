@@ -29,10 +29,6 @@ import spaceX from '../../data/example/spacex.json';
 
 const ImportModal = dynamic(() => import('../../components/import_modal'), { ssr: false });
 
-/**
- * It fetches all the graphs from the database and displays them in a list
- * @returns Home component
- */
 export default function Home() {
     const router = useRouter();
     const [graphs, setGraphs] = useState([]);
@@ -81,12 +77,9 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>DBER</title>
-                <meta
-                    name="description"
-                    content="Database design tool based on entity relation diagram"
-                />
-                <link rel="icon" href="/favicon.ico" />
+                <title>Databases</title>
+                <meta name="description" content="Lets Revolutionilise" />
+                <link rel="icon" href="/favicon.svg" />
             </Head>
             <ListNav
                 addGraph={() => handlerAddGraph()}
@@ -106,7 +99,16 @@ export default function Home() {
                                 extra={
                                     <Space>
                                         <Link href={`/graphs/${item.id}`}>
-                                            <Button type="primary" icon={<IconEdit />} />
+                                            <Button
+                                                type="primary"
+                                                icon={<IconEdit />}
+                                                style={{
+                                                    backgroundColor: 'green',
+                                                    fontWeight: 'bold',
+                                                }}
+                                            >
+                                                Edit
+                                            </Button>
                                         </Link>
                                         <Popconfirm
                                             title="Are you sure to delete this graph?"
@@ -119,7 +121,10 @@ export default function Home() {
                                                 type="primary"
                                                 status="danger"
                                                 icon={<IconDelete />}
-                                            />
+                                                style={{ backgroundColor: 'red' }}
+                                            >
+                                                Delete
+                                            </Button>
                                         </Popconfirm>
                                     </Space>
                                 }
@@ -130,16 +135,16 @@ export default function Home() {
                                     description={
                                         <Space style={{ marginTop: 4 }}>
                                             {item.tableDict ? (
-                                                <Tag color="arcoblue" icon={<IconNav />}>
+                                                <Tag color="#1890ff" icon={<IconNav />}>
                                                     {Object.keys(item.tableDict).length} tables
                                                 </Tag>
                                             ) : null}
-                                            <Tag color="green" icon={<IconCopy />}>
-                                                createdAt{' '}
+                                            <Tag color="#fadb14" icon={<IconCopy />}>
+                                                Created at{' '}
                                                 {new Date(item.createdAt).toLocaleString()}
                                             </Tag>
-                                            <Tag color="gold" icon={<IconCalendarClock />}>
-                                                updatedAt{' '}
+                                            <Tag color="#d48806" icon={<IconCalendarClock />}>
+                                                Updated at{' '}
                                                 {new Date(item.updatedAt).toLocaleString()}
                                             </Tag>
                                         </Space>
